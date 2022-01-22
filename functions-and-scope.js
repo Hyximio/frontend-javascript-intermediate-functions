@@ -16,6 +16,8 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6
 
+// 1: Maar een let 'count' variable aan waar je de hoeveelheid cum laude kan bijhoudern
+// 2: Loop door alle cijfers en als het gelijk is als 8 of hoger de teller omhoog gaat
 
 /*  1b: Omschrijven tot een herbruikbare functie   */
 // Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
@@ -27,7 +29,15 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
+function cumLaude( _grades ){
+    let amount = 0;
+    for ( const grade of _grades )
+        if (grade >= 8) amount++;
 
+    return amount;
+}
+
+console.log( cumLaude( grades ) );
 
 
 /* Opdracht  2: Gemiddeld cijfer */
@@ -35,9 +45,9 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 /* 2a: Script schrijven  */
 // De studenten-administratie moet ieder blok opnieuw berekenen wat het gemiddelde eindcijfer is, maar we beginnen met de grades array van hierboven.
 // Schrijf de stapjes om dit te kunnen berekenen eerst uit en vraag jezelf de volgende dingen af:
-// * Hoe wordt een gemiddelde berekend?
-// * Wat moet ik verzamelen uit de array van cijfers om uiteindelijk een gemiddelde te kunnen berekenen?
-// * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
+// * Hoe wordt een gemiddelde berekend? ( alles optellen en delen door de hoeveelheid cijfers)
+// * Wat moet ik verzamelen uit de array van cijfers om uiteindelijk een gemiddelde te kunnen berekenen? ( alle waardes )
+// * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten? ( for loop )
 // Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 6.642857142857143
@@ -53,12 +63,21 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+function averageGrade( _grades ){
+    let sum = 0;
+    for ( const grade of _grades )
+        sum += grade;
+
+    return sum / _grades.length;
+}
+
+console.log( averageGrade( grades ) );
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
+console.log( averageGrade( grades ).toFixed(2) );
 
 
 /* Bonusopdracht: hoogste cijfer */
@@ -82,3 +101,13 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+function highestGrade( _grades ){
+    let highest = 0;
+    for ( const grade of _grades )
+        if (grade > highest) highest = grade;
+
+    return highest;
+}
+
+console.log( highestGrade( grades ) );
