@@ -55,12 +55,13 @@ for ( const eMail of eMails )
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
 console.log( "\n -- Opdracht 3 --\n" );
+
 const eMailValids = ["n.eeken@novi.nl", "tessmellink@novi.nl", "n.eekenanovi.nl", "n.eeken@novinl.", "tessmellink@novi,nl"];
 
 function checkEmailValidity( _eMail ){
 
-    // Check if only 1 '@' exist
-    if ( (_eMail.match( /@/g ) || []).length !== 1 )
+    // Check if only 1 '@' and a ',' exist
+    if ( (_eMail.match( /@/g ) || []).length !== 1 || _eMail.search(",") !== -1)
         return false;
 
     const domain = getEmailDomain( _eMail );
@@ -70,7 +71,7 @@ function checkEmailValidity( _eMail ){
         return false;
 
     // Check if '.' is not at the beginning or the end of domain
-    if ( domain.slice(-1) === "." || domain[0] === "." )
+    if ( domain[0] === "." || domain.slice(-1) === "." )
         return false;
 
     return true;
